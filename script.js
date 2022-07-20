@@ -12,7 +12,7 @@ var uppers = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q
 var nums = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specs = [' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~'];
 
-var charPool;
+var charPool = [];
 var finalPassword = "";
 
 function generatePassword() {
@@ -28,15 +28,12 @@ function generatePassword() {
     alert("Length is not a number!");
     return;
   }
-  else if (passwordLength < 8) {
-    alert("Length must be greater than 8!");
-    return;
-  }
-  else if (passwordLength > 128) {
-    alert("Length must be less than 128!");
+  else if (passwordLength < 8 || passwordLength > 128) {
+    alert("Length must be greater than 8 or less than 128!");
     return;
   }
 
+  // Welcome to confirm country
   useUpper = confirm("Do you want your password to have uppercase letters?");
 
   useLower = confirm("Do you want your password to use lowercase letters?");
@@ -45,11 +42,13 @@ function generatePassword() {
 
   useNum = confirm("Do you want your password to use numbers?");
 
+  // Case for if all four of the confirm prompts were given false
   if (!useUpper && !useLower && !useSpec && !useNum) {
     alert("You need to say yes to at least one of the conditions.")
     return;
   }
 
+  // Concatenate the character pool, I wish there was a more elegant way of doing this
   if (useUpper) {
     charPool = charPool.concat(uppers);
   }
@@ -66,15 +65,13 @@ function generatePassword() {
     charPool = charPool.concat(nums);
   }
 
-
+  // Run this loop a number of times equal to the inputted password length, picking a random character
+  // from the char pool to make the password, concatenating it
   for (let i = 0; i < passwordLength; i++) {
     var c = charPool[Math.floor( Math.random() * charPool.length )];
     finalPassword = finalPassword.concat(c);
   }
 
-  console.log("The password: " + finalPassword);
-  console.log("Length is: " + finalPassword.length + ", just checking");
-  console.log("Function finished as intended... Probably.")
   return finalPassword;
 }
 
@@ -82,6 +79,10 @@ function generatePassword() {
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
+
+  if (password == undefined) {
+    password = "undefined - please don't use this as your actual password.";
+  }
 
   passwordText.value = password;
 
