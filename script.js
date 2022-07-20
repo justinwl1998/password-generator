@@ -24,7 +24,7 @@ function generatePassword() {
 
 
   //while (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
-  // The while loop implementation could work, but it's best if the function safely exits if there's an invalid input
+  // The while loop implementation could work, it's best if the function safely exits if there's an invalid input
   // rather than trapping the user in a loop they don't know how to get out of
 
 
