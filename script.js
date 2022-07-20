@@ -21,16 +21,23 @@ function generatePassword() {
   finalPassword = "";
   passwordLength = 0;
 
-  while (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
-    passwordLength = prompt("How many characters would you like in your password?");
-    passwordLength = parseInt(passwordLength);
 
-    if (isNaN(passwordLength)) {
-      alert("Length is not a number!");
-    }
-    else if (passwordLength < 8 || passwordLength > 128) {
-      alert("Length must be greater than 8 or less than 128!");
-    }
+
+  //while (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
+  // The while loop implementation could work, but it's best if the function safely exits if there's an invalid input
+  // rather than trapping the user in a loop they don't know how to get out of
+
+
+  passwordLength = prompt("How many characters would you like in your password?");
+  passwordLength = parseInt(passwordLength);
+
+  if (isNaN(passwordLength)) {
+    alert("Length is not a number!");
+    return;
+  }
+  else if (passwordLength < 8 || passwordLength > 128) {
+    alert("Length must be greater than 8 or less than 128!");
+    return;
   }
 
   // Welcome to confirm country
