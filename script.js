@@ -20,17 +20,16 @@ function generatePassword() {
   charPool = [];
   finalPassword = "";
 
-  passwordLength = prompt("How many characters would you like in your password?");
-  passwordLength = parseInt(passwordLength);
+  while (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
+    passwordLength = prompt("How many characters would you like in your password?");
+    passwordLength = parseInt(passwordLength);
 
-
-  if (isNaN(passwordLength)) {
-    alert("Length is not a number!");
-    return;
-  }
-  else if (passwordLength < 8 || passwordLength > 128) {
-    alert("Length must be greater than 8 or less than 128!");
-    return;
+    if (isNaN(passwordLength)) {
+      alert("Length is not a number!");
+    }
+    else if (passwordLength < 8 || passwordLength > 128) {
+      alert("Length must be greater than 8 or less than 128!");
+    }
   }
 
   // Welcome to confirm country
