@@ -19,6 +19,7 @@ function generatePassword() {
   // Reset the password character pool and the returned password on each run
   charPool = [];
   finalPassword = "";
+  passwordLength = 0;
 
   while (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
     passwordLength = prompt("How many characters would you like in your password?");
