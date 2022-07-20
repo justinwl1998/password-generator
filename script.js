@@ -1,19 +1,20 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-var passwordLength;
 var useUpper = false;
 var useLower = false;
 var useSpec = false;
 var useNum = false;
 
+// Using strings would work the same, but arrays are easier compared to having to deal with escape sequences
 var lowers = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var uppers = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var nums = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specs = [' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~'];
 
-var charPool = [];
-var finalPassword = "";
+var charPool;
+var finalPassword;
+var passwordLength;
 
 function generatePassword() {
   // Reset the password character pool and the returned password on each run
